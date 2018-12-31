@@ -1,0 +1,56 @@
+#include <groupoidLib/ReferenceElement.hpp>
+#include <groupoidLib/RingDegree.hpp>
+#include <groupoidLib/RingInterface.hpp>
+
+using namespace std;
+
+namespace Ring {
+
+  struct DenseRingMonoid{
+    ReferenceElement sentinelReference;
+    vector<long> bundleVariables; //dynamic stack of bundle variables.
+
+  };
+
+  class DenseRing : public RingInterface {
+
+  public:
+    //Zero generator
+    DenseRing(): monoid(){}
+
+    void addMonoid(DenseRingMonoid DM) {
+      for (auto it = monoid.begin(); it != monoid.end(); it++){
+	if ((*it)).bundleVariables == DM.bundleVariables) {
+      
+	(*it).sentinelReference += DM.sentinelReference;
+	return;
+      }
+
+      }
+
+    monoid.push_back(DM);
+
+}
+
+    void AddMonoid (vector<long> DM) {
+      for (auto it = monoid.begin(); it != monoid.end(); it++) {
+	if ((*it).bundleVariables == DM)
+	  return;
+
+      }
+
+      DenseRing A = {one(), DM};
+      monoid.push_back(A);
+
+    }
+
+
+
+}
+
+
+
+
+
+}
+
