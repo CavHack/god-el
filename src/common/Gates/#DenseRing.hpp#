@@ -44,6 +44,8 @@ namespace Ring {
 
     }
 
+  ReferenceElement eval(const vector<ReferenceElement>)
+
 
 
 }
